@@ -24,9 +24,10 @@ namespace Modio
 
         public Credentials Credentials { get; set; }
 
-        public Connection(Uri baseAddress, Credentials credentials)
+        public Connection(Uri baseAddress, Credentials credentials, string platform = "Windows")
         {
             http = new HttpClient();
+            http.DefaultRequestHeaders.Add("X-Modio-Platform", platform);
             BaseAddress = baseAddress;
             Credentials = credentials;
         }
